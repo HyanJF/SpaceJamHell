@@ -16,6 +16,10 @@ public class PlayerManager : MonoBehaviour
     float turnSmoothVelocity;
     private bool isGrounded = true;
 
+    private void Start()
+    {
+        //Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
