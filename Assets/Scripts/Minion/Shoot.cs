@@ -28,6 +28,7 @@ public class Shoot : MonoBehaviour
                 StartCoroutine(enemyLife());
                 if (distance.magnitude > 10) // Enemy's range
                 {
+                    //StartCoroutine(shoot()); AntiLarry
                     Debug.Log("Enemy Approaching");
                     this.transform.Translate(Vector3.forward * 2f * Time.deltaTime);
                     this.transform.LookAt(player.transform);

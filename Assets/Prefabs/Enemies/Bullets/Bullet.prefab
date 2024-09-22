@@ -146,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a279b1bf302d134ab7a5a55ce772e01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDMG: 10
+  bulletDMG: 2
   bulletLife: 3
