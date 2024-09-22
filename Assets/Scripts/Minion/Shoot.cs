@@ -25,13 +25,13 @@ public class Shoot : MonoBehaviour
         {
             if (hit.transform.CompareTag("Player"))
             {
-                if(distance.magnitude > 10) // Enemy's range
+                StartCoroutine(enemyLife());
+                if (distance.magnitude > 10) // Enemy's range
                 {
                     Debug.Log("Enemy Approaching");
                     this.transform.Translate(Vector3.forward * 2f * Time.deltaTime);
                     this.transform.LookAt(player.transform);
                     isShooting = false;
-                    StartCoroutine(enemyLife());
                 }
                 else
                 {
