@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6448658072176093654}
   - component: {fileID: 6335735723412295546}
   - component: {fileID: 2198811694337741215}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LarryTheBall
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,6 +169,10 @@ PrefabInstance:
     - target: {fileID: 7441440908871300343, guid: d951e255a0306e544873c270501e96b6, type: 3}
       propertyPath: m_Name
       value: Basketball
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441440908871300343, guid: d951e255a0306e544873c270501e96b6, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

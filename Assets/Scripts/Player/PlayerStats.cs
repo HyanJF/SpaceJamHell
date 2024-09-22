@@ -5,6 +5,12 @@ public class PlayerStats : MonoBehaviour
 {
     public float health, maxHealth = 100, lerpSpeed;
     public Image healthBar;
+    public static PlayerStats instance;
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(this);
+    }
 
     private void Start()
     {
