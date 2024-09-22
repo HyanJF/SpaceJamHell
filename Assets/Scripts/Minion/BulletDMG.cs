@@ -19,12 +19,12 @@ public class BulletDMG : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Player Hit");
-            other.GetComponent<PlayerStats>().Damage(bulletDMG);
+            PlayerStats.instance.Damage(bulletDMG);
             Destroy(gameObject);
         }
     }
