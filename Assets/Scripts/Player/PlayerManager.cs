@@ -19,7 +19,6 @@ public class PlayerManager : MonoBehaviour
     float turnSmoothVelocity;
     private bool isGrounded = true;
     private bool isDashing = false;
-    private bool isKnockedBack = false; // Indica si está siendo golpeado
     private float dashTime;
     private float knockbackTime;
     public static PlayerManager playerManager;
@@ -106,7 +105,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    public void ApplyKnockback()
     {
         if (!isKnockedBack)
         {
