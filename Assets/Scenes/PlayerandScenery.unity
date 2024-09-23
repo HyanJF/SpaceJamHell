@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 66018636}
   - component: {fileID: 66018635}
   m_Layer: 6
-  m_Name: Po
+  m_Name: KnockBackWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,8 +234,8 @@ Transform:
   m_GameObject: {fileID: 66018634}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 2.5, z: 10.499999}
-  m_LocalScale: {x: 10, y: 5, z: 1}
+  m_LocalPosition: {x: 5, y: 5, z: 10.499999}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -776,6 +776,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7225973741139249287, guid: 7e0c677e4f2a28d41827b3629c9d1ffe, type: 3}
   m_PrefabInstance: {fileID: 1473509619864987882}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &1839873865 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 4416595521902706873, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+  m_PrefabInstance: {fileID: 3849539313847303297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1912036292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,7 +1239,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2201345941520794530, guid: e1541dd3e7718f140a2871da0852ce08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000000059604645
       objectReference: {fileID: 0}
     - target: {fileID: 3609553832261542289, guid: e1541dd3e7718f140a2871da0852ce08, type: 3}
       propertyPath: m_Name
@@ -1282,7 +1287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6102863215510255934, guid: e1541dd3e7718f140a2871da0852ce08, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.000000059604645
       objectReference: {fileID: 0}
     - target: {fileID: 9096553178760085844, guid: e1541dd3e7718f140a2871da0852ce08, type: 3}
       propertyPath: m_Follow
@@ -1305,6 +1310,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1118660224422081491, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118660224422081491, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2198811694337741215, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
       propertyPath: healthBar
       value: 
@@ -1349,17 +1362,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3696679617807453929, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416595521902706873, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4416595521902706873, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4591121914512686772, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
       propertyPath: m_Name
       value: LarryTheBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591121914512686772, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6335735723412295546, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 2145106295}
     - target: {fileID: 6335735723412295546, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1839873865}
+    - target: {fileID: 6335735723412295546, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
       propertyPath: knockbackForce
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6448658072176093654, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6448658072176093654, guid: 84784f32bc38df74996f64a7897dc709, type: 3}
       propertyPath: m_IsTrigger

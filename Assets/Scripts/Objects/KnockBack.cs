@@ -8,7 +8,7 @@ public class KnockBack : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerManager>().ApplyKnockback();
+            other.GetComponent<PlayerManager>().ApplyKnockback(5);
             
         }
     }
