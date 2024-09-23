@@ -8,7 +8,7 @@ public class CapsuleHealing : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            other.GetComponent<PlayerStats>().Heal(15);
+            PlayerStats.instance.Heal(25);
             Destroy(gameObject);
         }
         
