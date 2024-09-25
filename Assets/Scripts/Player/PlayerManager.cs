@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     private bool isGrounded = true;
     private bool isDashing = false;
     private bool isKnockedBack = false;
-    private bool isJumping = false; 
+    private bool isJumping = false;
     private float dashTime;
     private float knockbackTime;
     private float jumpTime; 

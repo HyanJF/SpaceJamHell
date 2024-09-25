@@ -10,10 +10,12 @@ public class Shoot : MonoBehaviour
     public Transform spawner;
     public float bulletSpeed;
     bool isShooting = false;
+    public bool antiLarry = false;
 
     void Start()
     {
-        StartCoroutine(shoot());
+        if (!antiLarry)
+            StartCoroutine(shoot());
         player = PlayerStats.instance.transform;
     }
 
@@ -26,18 +28,26 @@ public class Shoot : MonoBehaviour
             if (hit.transform.CompareTag("Player"))
             {
                 StartCoroutine(enemyLife());
-                if (distance.magnitude > 10) // Enemy's range
+                if (distance.magnitude > 10 && antiLarry) // Enemy's range
                 {
-                    //StartCoroutine(shoot()); AntiLarry
                     Debug.Log("Enemy Approaching");
-                    this.transform.Translate(Vector3.forward * 2f * Time.deltaTime);
+                    this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
                     this.transform.LookAt(player.transform);
                     isShooting = false;
+                }
+                else if (distance.magnitude < 10 && !antiLarry)
+                {
+                    Debug.Log("Enemy Approaching");
+                    this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
+                    this.transform.LookAt(player.transform);
+                    isShooting = true;
                 }
                 else
                 {
                     isShooting = true;
                     this.transform.LookAt(player.transform);
+                    if (antiLarry)
+                        StartCoroutine(shoot());
                 }
             }
         }
@@ -45,7 +55,9 @@ public class Shoot : MonoBehaviour
 
     IEnumerator shoot()
     {
-        yield return new WaitForSeconds(0.5f);
+
+        if (antiLarry) yield return new WaitForSeconds(1f);
+        else yield return new WaitForSeconds(0.5f);
         if (isShooting)
         {
             Debug.Log("Enemy Shooting");
@@ -58,7 +70,7 @@ public class Shoot : MonoBehaviour
 
     IEnumerator enemyLife()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         Debug.Log("Destroying Enemy");
         Destroy(gameObject);
     }
