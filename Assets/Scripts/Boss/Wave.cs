@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Wave : MonoBehaviour
@@ -9,6 +8,10 @@ public class Wave : MonoBehaviour
     [SerializeField] float waveSpawn;
     [SerializeField] float detectionDistance;
     [SerializeField] GameObject player;
+    [SerializeField] GameObject[] minionSpawners;
+
+    private bool secondStage;
+    private bool thirdStage;
 
     private void OnDrawGizmosSelected()
     {
@@ -25,8 +28,21 @@ public class Wave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Life.instance.health == 2)
+        {
+            Debug.Log("Commencing second Stage");
+            Debug.Log("Spawning Defensive Minions");
+            secondStage = true;
+        }
+        else if (Life.instance.health == 1)
+        {
+            Debug.Log("Commencing third Stage");
+            Debug.Log("Spawning Anti-Larrys");
+            secondStage = false;
+            thirdStage = true;
+        }
         waveTimer += Timer();
-        if (waveTimer > waveSpawn)
+        if (waveTimer > waveSpawn  ||  waveTimer > waveSpawn - 1 && secondStage  ||  waveTimer > waveSpawn - 1.5f && thirdStage)
         {
             StartCoroutine(WaveAttack());
             waveTimer = 0;
@@ -35,7 +51,19 @@ public class Wave : MonoBehaviour
 
     private IEnumerator WaveAttack()
     {
-        yield return new WaitForSeconds(waveSpawn);
+        if (Life.instance.health == 3)
+            yield return new WaitForSeconds(waveSpawn);
+        else if (Life.instance.health == 2)
+        {
+            minionSpawners[1].SetActive(true);
+            yield return new WaitForSeconds(waveSpawn - 1);
+        }
+        else if (Life.instance.health == 1)
+        {
+            minionSpawners[1].SetActive(false);
+            minionSpawners[0].SetActive(true);
+            yield return new WaitForSeconds(waveSpawn - 1.5f);
+        }
         Debug.Log("Commencing Defensive Wave");
         ShockWave();
     }
@@ -46,10 +74,10 @@ public class Wave : MonoBehaviour
         Debug.Log("Player Detected");
         foreach(Collider c in collider)
         {
-            if (c.GetComponent<PlayerManager>())
+            if (c.GetComponent<PlayerV2Manager>())
             {
                 Debug.Log("Applying Knockback");
-                c.GetComponent<PlayerManager>().ApplyKnockback();
+                c.GetComponent<PlayerV2Manager>().ApplyKnockback(20);
             }
         }
     }

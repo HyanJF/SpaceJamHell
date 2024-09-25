@@ -25,7 +25,7 @@ public class BulletDMG : MonoBehaviour
         {
             Debug.Log("Player Hit");
             PlayerStats.instance.Damage(bulletDMG);
-            PlayerManager.playerManager.ApplyKnockback(3);
+            PlayerV2Manager.playerV2Manager.ApplyKnockback(3);
             Destroy(gameObject);
         }
     }
