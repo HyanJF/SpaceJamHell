@@ -23,6 +23,12 @@ public class PlayerV2Manager : MonoBehaviour
     private float knockbackForce;
     public static PlayerV2Manager playerV2Manager;
 
+    private void Awake()
+    {
+        if (playerV2Manager == null) playerV2Manager = this;
+        else Destroy(this);
+    }
+
     void Start()
     {
         controller = GetComponent<CharacterController>();

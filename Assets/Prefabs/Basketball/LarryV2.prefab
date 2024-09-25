@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 160869198761359071}
   - component: {fileID: 3110832830330578107}
   - component: {fileID: 8192832799823893729}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: LarryV2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -134,6 +134,10 @@ PrefabInstance:
     - target: {fileID: 4674857870247140059, guid: b5c73fad524d1844c9da099fa63c558a, type: 3}
       propertyPath: m_Name
       value: BasketballV2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674857870247140059, guid: b5c73fad524d1844c9da099fa63c558a, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8022355376524761253, guid: b5c73fad524d1844c9da099fa63c558a, type: 3}
       propertyPath: m_LocalPosition.x
