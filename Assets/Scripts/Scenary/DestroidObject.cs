@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnockBack : MonoBehaviour
+public class DestroidObject : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Obstacle")
         {
-            other.GetComponent<PlayerV2Manager>().ApplyKnockback(250);
+            Destroy(other.gameObject);
         }
     }
 }
