@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
         {
             Debug.Log("Enemy Spawned");
             Instantiate(enemy, transform.position, enemy.transform.rotation);
+            enemy.layer = 9;
             spawnCooldown = 0;
         }
     }

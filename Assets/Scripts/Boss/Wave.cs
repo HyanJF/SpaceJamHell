@@ -33,6 +33,7 @@ public class Wave : MonoBehaviour
             Debug.Log("Commencing second Stage");
             Debug.Log("Spawning Defensive Minions");
             secondStage = true;
+            minionSpawners[1].SetActive(true);
         }
         else if (Life.instance.health == 1)
         {
@@ -40,30 +41,27 @@ public class Wave : MonoBehaviour
             Debug.Log("Spawning Anti-Larrys");
             secondStage = false;
             thirdStage = true;
+            minionSpawners[1].SetActive(false);
+            minionSpawners[0].SetActive(true);
         }
         waveTimer += Timer();
-        if (waveTimer > waveSpawn  ||  waveTimer > waveSpawn - 1 && secondStage  ||  waveTimer > waveSpawn - 1.5f && thirdStage)
+        if (waveTimer > waveSpawn || waveTimer > waveSpawn - 1 && secondStage || waveTimer > waveSpawn - 1.5f && thirdStage)
         {
             StartCoroutine(WaveAttack());
             waveTimer = 0;
         }
+        float distance = Vector3.Distance(transform.position, player.transform.position);
+        if (distance > detectionDistance) waveTimer = 0;
     }
 
     private IEnumerator WaveAttack()
     {
         if (Life.instance.health == 3)
-            yield return new WaitForSeconds(waveSpawn);
+            yield return new WaitForSeconds(waveSpawn - 1.2f);
         else if (Life.instance.health == 2)
-        {
-            minionSpawners[1].SetActive(true);
             yield return new WaitForSeconds(waveSpawn - 1);
-        }
         else if (Life.instance.health == 1)
-        {
-            minionSpawners[1].SetActive(false);
-            minionSpawners[0].SetActive(true);
-            yield return new WaitForSeconds(waveSpawn - 1.5f);
-        }
+            yield return new WaitForSeconds(waveSpawn);
         Debug.Log("Commencing Defensive Wave");
         ShockWave();
     }
@@ -77,7 +75,9 @@ public class Wave : MonoBehaviour
             if (c.GetComponent<PlayerV2Manager>())
             {
                 Debug.Log("Applying Knockback");
-                c.GetComponent<PlayerV2Manager>().ApplyKnockback(150);
+                if (Life.instance.health == 3) c.GetComponent<PlayerV2Manager>().ApplyKnockback(50);
+                else if (Life.instance.health == 2) c.GetComponent<PlayerV2Manager>().ApplyKnockback(100);
+                else if (Life.instance.health == 1) c.GetComponent<PlayerV2Manager>().ApplyKnockback(250);
             }
         }
     }
