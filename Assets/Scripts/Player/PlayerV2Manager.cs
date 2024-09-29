@@ -11,7 +11,7 @@ public class PlayerV2Manager : MonoBehaviour
     public float rotationSpeed = 100f;
     public Transform cam;
     public Transform ball;
-    private CharacterController controller;
+    public CharacterController controller;
     private Vector3 velocity;
     private bool isGrounded;
     public float turnSmoothTime = 0.1f;

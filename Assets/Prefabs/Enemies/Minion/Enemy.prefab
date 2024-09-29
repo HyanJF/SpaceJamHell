@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8207156400662481254}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 2504331368271674066}
   - component: {fileID: 4026047643659382590}
   - component: {fileID: 7680830673804609703}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,6 +156,8 @@ MonoBehaviour:
   bullet: {fileID: 1272703425065591652, guid: 6f4813fcd293a5344ab6411270c3e4d2, type: 3}
   spawner: {fileID: 8207156400662481254}
   bulletSpeed: 800
+  antiLarry: 0
+  machineGun: 0
 --- !u!54 &7680830673804609703
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -195,7 +197,7 @@ GameObject:
   - component: {fileID: 2268368229454210591}
   - component: {fileID: 5949286791100243176}
   - component: {fileID: 1414225426320821373}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +213,7 @@ Transform:
   m_GameObject: {fileID: 5126819188756529872}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.621, y: -0.033, z: 0.572}
+  m_LocalPosition: {x: 0.483, y: -0.033, z: 0.572}
   m_LocalScale: {x: 0.21511, y: 0.21511, z: 0.21511}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -301,7 +303,7 @@ GameObject:
   - component: {fileID: 3514504561739163555}
   - component: {fileID: 5711410041809917330}
   - component: {fileID: 3769812503152502697}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: visor (temp)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

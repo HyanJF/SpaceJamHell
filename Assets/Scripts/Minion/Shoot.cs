@@ -10,11 +10,12 @@ public class Shoot : MonoBehaviour
     public Transform spawner;
     public float bulletSpeed;
     bool isShooting = false;
-    public bool antiLarry = false;
+    public bool antiLarry = false, machineGun = false;
+    private int machineGunBulletCount;
 
     void Start()
     {
-        if (!antiLarry)
+        if (!antiLarry || !machineGun)
             StartCoroutine(shoot());
         player = PlayerStats.instance.transform;
     }
@@ -28,14 +29,14 @@ public class Shoot : MonoBehaviour
             if (hit.transform.CompareTag("Player"))
             {
                 StartCoroutine(enemyLife());
-                if (distance.magnitude > 10 && antiLarry) // Enemy's range
+                if (distance.magnitude > 20 && antiLarry && !machineGun) // Anti-Larry's range
                 {
-                    Debug.Log("Enemy Approaching");
+                    Debug.Log("Anti-Larry Approaching!!");
                     this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
                     this.transform.LookAt(player.transform);
                     isShooting = false;
                 }
-                else if (distance.magnitude < 10 && !antiLarry)
+                else if (distance.magnitude < 10 && !antiLarry && !machineGun  || distance.magnitude < 10 && machineGun && !antiLarry) // Minion's and machine gun's range
                 {
                     Debug.Log("Enemy Approaching");
                     this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
@@ -57,6 +58,7 @@ public class Shoot : MonoBehaviour
     {
 
         if (antiLarry) yield return new WaitForSeconds(1f);
+        else if (machineGun) yield return new WaitForSeconds(0.2f);
         else yield return new WaitForSeconds(0.5f);
         if (isShooting)
         {
@@ -64,13 +66,19 @@ public class Shoot : MonoBehaviour
             Rigidbody clone;
             clone = (Rigidbody)Instantiate(bullet, spawner.transform.position, Quaternion.identity);
             clone.velocity = spawner.TransformDirection(Vector3.forward * bulletSpeed * Time.deltaTime);
+            machineGunBulletCount++;
+        }
+        if (machineGun && machineGunBulletCount >= 10)
+        {
+            yield return new WaitForSeconds(1f);
+            machineGunBulletCount = 0;
         }
         StartCoroutine(shoot());
     }
 
     IEnumerator enemyLife()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(8f);
         Debug.Log("Destroying Enemy");
         Destroy(gameObject);
     }
