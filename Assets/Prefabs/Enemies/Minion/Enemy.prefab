@@ -155,7 +155,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bullet: {fileID: 1272703425065591652, guid: 6f4813fcd293a5344ab6411270c3e4d2, type: 3}
   spawner: {fileID: 8207156400662481254}
-  bulletSpeed: 800
+  bulletSpeed: 1200
   antiLarry: 0
   machineGun: 0
 --- !u!54 &7680830673804609703

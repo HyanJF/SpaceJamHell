@@ -41,7 +41,7 @@ public class Shoot : MonoBehaviour
                     Debug.Log("Enemy Approaching");
                     this.transform.Translate(Vector3.forward * 5f * Time.deltaTime);
                     this.transform.LookAt(player.transform);
-                    isShooting = true;
+                    isShooting = false;
                 }
                 else
                 {
@@ -57,8 +57,8 @@ public class Shoot : MonoBehaviour
     IEnumerator shoot()
     {
 
-        if (antiLarry) yield return new WaitForSeconds(1f);
-        else if (machineGun) yield return new WaitForSeconds(0.2f);
+        if (antiLarry) yield return new WaitForSeconds(0.8f);
+        else if (machineGun) yield return new WaitForSeconds(0.1f);
         else yield return new WaitForSeconds(0.5f);
         if (isShooting)
         {
