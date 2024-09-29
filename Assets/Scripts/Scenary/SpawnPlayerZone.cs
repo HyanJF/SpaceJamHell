@@ -6,7 +6,7 @@ using UnityEngine;
 public class SpawnPlayerZone : MonoBehaviour
 {
     public GameObject larry;  
-    public GameObject spawnPoint; 
+    public Vector3 spawnPoint; 
     public bool isFalling = false;   
 
     public static SpawnPlayerZone spawnPlayerZone; 
@@ -25,6 +25,7 @@ public class SpawnPlayerZone : MonoBehaviour
     {
         if(isFalling)
         {
+            PlayerV2Manager.playerV2Manager.controller.enabled = false;
             SpawnPlayer();
             isFalling = false;
         }
@@ -33,7 +34,8 @@ public class SpawnPlayerZone : MonoBehaviour
     {
         if (larry != null && spawnPoint != null)
         {
-            larry.transform.position = spawnPoint.transform.position;
+            larry.transform.position = spawnPoint;
+            PlayerV2Manager.playerV2Manager.controller.enabled = true;
         }
     }
 }

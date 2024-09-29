@@ -9,14 +9,15 @@ public class DamageBoss : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Boss Hit");
+            SpawnPlayerZone.spawnPlayerZone.isFalling = true;
             Life.instance.Damage(playerDMG);
-            PlayerV2Manager.playerV2Manager.ApplyKnockback(150);
         }
 
         if (Life.instance.health <= 0)
         {
             Debug.Log("Boss killed");
             Life.instance.health = 0;
+            Life.instance.healthBar.fillAmount = 0;
             Destroy(gameObject);
         }
     }

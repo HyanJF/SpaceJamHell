@@ -77,7 +77,7 @@ public class Wave : MonoBehaviour
             if (c.GetComponent<PlayerV2Manager>())
             {
                 Debug.Log("Applying Knockback");
-                c.GetComponent<PlayerV2Manager>().ApplyKnockback(20);
+                c.GetComponent<PlayerV2Manager>().ApplyKnockback(150);
             }
         }
     }
