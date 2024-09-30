@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,10 @@ public class Life : MonoBehaviour
     public float health, maxHealth = 3, lerpSpeed;
     public Image healthBar;
     public static Life instance;
+
+    public List<AudioClip> audioClips;
+    public AudioSource audioSource;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -44,6 +49,12 @@ public class Life : MonoBehaviour
     public void Damage(float damagePoints)
     {
         if (health > 0)
+        {
+            int r = Random.Range(0, audioClips.Count);
+            AudioClip clip = audioClips[r];
+            audioSource.clip = clip;
+            audioSource.Play();
             health -= damagePoints;
+        }
     }
 }
