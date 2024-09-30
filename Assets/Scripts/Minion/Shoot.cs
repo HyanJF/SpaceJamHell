@@ -13,6 +13,9 @@ public class Shoot : MonoBehaviour
     public bool antiLarry = false, machineGun = false;
     private int machineGunBulletCount;
 
+    public List<AudioClip> audioClips;
+    public AudioSource audioSource;
+
     void Start()
     {
         if (!antiLarry || !machineGun)
@@ -65,6 +68,10 @@ public class Shoot : MonoBehaviour
             Debug.Log("Enemy Shooting");
             Rigidbody clone;
             clone = (Rigidbody)Instantiate(bullet, spawner.transform.position, Quaternion.identity);
+            int r = Random.Range(0, audioClips.Count);
+            AudioClip clip = audioClips[r];
+            audioSource.clip = clip;
+            audioSource.Play();
             clone.velocity = spawner.TransformDirection(Vector3.forward * bulletSpeed * Time.deltaTime);
             machineGunBulletCount++;
         }

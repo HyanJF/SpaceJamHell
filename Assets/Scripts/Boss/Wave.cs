@@ -59,7 +59,7 @@ public class Wave : MonoBehaviour
         if (Life.instance.health == 3)
             yield return new WaitForSeconds(waveSpawn - 1.2f);
         else if (Life.instance.health == 2)
-            yield return new WaitForSeconds(waveSpawn - 1);
+            yield return new WaitForSeconds(waveSpawn - 0.8f);
         else if (Life.instance.health == 1)
             yield return new WaitForSeconds(waveSpawn);
         Debug.Log("Commencing Defensive Wave");
