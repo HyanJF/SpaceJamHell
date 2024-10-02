@@ -9,7 +9,6 @@ public class Wave : MonoBehaviour
     [SerializeField] float detectionDistance;
     [SerializeField] GameObject player;
     [SerializeField] GameObject[] minionSpawners;
-
     private bool secondStage;
     private bool thirdStage;
 

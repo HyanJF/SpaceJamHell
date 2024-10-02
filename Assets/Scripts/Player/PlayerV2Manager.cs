@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerV2Manager : MonoBehaviour
 {
@@ -32,6 +29,7 @@ public class PlayerV2Manager : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
