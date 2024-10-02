@@ -11,6 +11,8 @@ public class PlayerStats : MonoBehaviour
     public List<AudioClip> audioClips;
     public AudioSource audioSource;
 
+    public Animator animator;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -46,16 +48,22 @@ public class PlayerStats : MonoBehaviour
     {
         if(health > 0)
         {
+            animator.SetTrigger("Hurt");
             health -= damagePoints;
             int r = Random.Range(0, audioClips.Count);
             AudioClip clip = audioClips[r];
             audioSource.clip = clip;
             audioSource.Play();
         }
+        else if(health <= 0)
+        {
+            UIMethod.uIMethod.LoseMenu();
+        }
     }
 
     public void Heal(float healingPoints)
     {
+        animator.SetTrigger("Heal");
         if(health < maxHealth)
             health += healingPoints;
     }

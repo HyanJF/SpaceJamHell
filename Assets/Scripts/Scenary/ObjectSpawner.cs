@@ -1,13 +1,18 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
     public Transform[] spawnPoints;
     public GameObject[] objectsToSpawn;
-    public float spawnInterval = 2f;
+    public float spawnInterval = 0.9f;
 
+    public static ObjectSpawner os;
+    private void Awake()
+    {
+        if (os == null) os = this;
+        else Destroy(this);
+    }
     private void Start()
     {
         StartCoroutine(SpawnObjects());

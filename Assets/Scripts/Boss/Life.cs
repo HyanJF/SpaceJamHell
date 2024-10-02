@@ -10,6 +10,7 @@ public class Life : MonoBehaviour
 
     public List<AudioClip> audioClips;
     public AudioSource audioSource;
+    public Animator animator;
 
     private void Awake()
     {
@@ -52,6 +53,7 @@ public class Life : MonoBehaviour
         {
             int r = Random.Range(0, audioClips.Count);
             AudioClip clip = audioClips[r];
+            animator.SetTrigger("Hurt");
             audioSource.clip = clip;
             audioSource.Play();
             health -= damagePoints;
